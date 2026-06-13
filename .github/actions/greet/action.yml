@@ -1,0 +1,13 @@
+name: Greeting Action
+
+inputs:
+  username:
+    required: true
+    description: username
+
+runs: 
+  using: composite
+  
+  steps:
+    - shell: bash
+      run: ${{ github.action_path }}/greet.sh "${{ inputs.username }}"
