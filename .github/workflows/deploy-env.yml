@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        options:
+          - staging
+          - production
+        description: target env
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses:  ./.github/workflows/common-build.yml
+
+      - name: build
+        run: echo "Deploying to ${{ inputs.env }}
